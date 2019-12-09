@@ -17,7 +17,8 @@ jobs:
 
     - name: list
       shell: bash
-      run: ls -laR ${{runner.workspace}}
+      working-directory: ${{runner.workspace}}
+      run: ls -laR
     
     - uses: actions/upload-artifact@v1
       with:
