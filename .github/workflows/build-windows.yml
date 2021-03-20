@@ -18,9 +18,9 @@ jobs:
     - name: list
       shell: bash
       working-directory: ${{runner.workspace}}
-      run: ls -laR
+      run: mkdir /d/someplace ; echo "contents" > /dev/somplace ; ls -laR /d/someplace
     
-    - uses: actions/upload-artifact@v1
+    - uses: actions/upload-artifact@v2
       with:
         name: my-artifact
-        path: ${{runner.workspace}}\actionsandbox\folder
+        path: /d/someplace
