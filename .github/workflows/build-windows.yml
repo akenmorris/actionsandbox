@@ -29,8 +29,7 @@ jobs:
 
     - name: try ssh
       run: |
-        where ssh
-        ssh runner@${{ secrets.SSH_HOST }} ls
+        Get-Command ssh
 
     - name: try ssh2
       shell: bash
