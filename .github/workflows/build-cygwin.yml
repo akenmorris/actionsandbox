@@ -18,8 +18,8 @@ jobs:
     - name: Set up Cygwin
       uses: egor-tensin/setup-cygwin@v3
       with:
-      platform: x64
-      packages: rsync
+        platform: x64
+        packages: rsync
 
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
