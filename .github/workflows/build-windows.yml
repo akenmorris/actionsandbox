@@ -19,7 +19,7 @@ jobs:
       run: choco install rsync openssh --no-progress --yes 
 
     - name: update path
-      run: echo "C:\Program Files\OpenSSH-Win64" >> $GITHUB_PATH
+    - run: echo "C:\Program Files\OpenSSH-Win64" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Prepend
 
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
