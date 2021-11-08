@@ -26,7 +26,13 @@ jobs:
       with:
         key: ${{ secrets.SSH_PRIVATE_KEY }} 
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
-      
+
+
+    - name: copy stuff
+      shell: bash
+      run: |
+        cp -a C:/Users/runneradmin/.ssh C:/cygwin/home/runneradmin
+        
     - name: try ssh
       run: |
         Get-Command ssh
