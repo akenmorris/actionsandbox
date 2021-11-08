@@ -47,6 +47,7 @@ jobs:
         mkdir ~/.ssh
         echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
         echo "${{ secrets.KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+        chmod 600 ~/.ssh/id_rsa ~/.ssh/known_hosts
         rsync -v -v -v -avz runner@brutus.sci.utah.edu:file .
 
     - uses: actions/download-artifact@v2
