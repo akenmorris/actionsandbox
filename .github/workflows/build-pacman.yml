@@ -1,6 +1,9 @@
 name: Windows Build pacman
 
-on: push
+on:
+  push:
+    branches:
+      - none
 
 env:
   # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)

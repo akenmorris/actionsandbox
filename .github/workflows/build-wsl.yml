@@ -41,10 +41,12 @@ jobs:
         which rsync
         
     - name: rsync
+      shell: wsl-bash {0}
       working-directory: ${{runner.workspace}}
       run: |
-        Get-Command ssh
-        Get-Command rsync
+        mkdir ~/.ssh
+        echo ${{ secrets.SSH_PRIVATE_KEY }} > ~/.ssh/id_rsa
+        echo ${{ secrets.KNOWN_HOSTS }} > ~/.ssh/known_hosts
         rsync -v -v -v -avz runner@brutus.sci.utah.edu:file .
 
     - uses: actions/download-artifact@v2
