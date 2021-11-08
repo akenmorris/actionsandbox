@@ -19,9 +19,9 @@ jobs:
 #      run: choco install rsync --no-progress --yes 
       run: choco install rsync openssh --no-progress --yes 
 
-    - name: update path
-#      run: echo "C:\Program Files\OpenSSH-Win64" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
-      run: echo "C:\ProgramData\Chocolatey\bin" | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append
+    - name: Prepend Chocolatey path
+      shell: pwsh
+      run: Write-Host "::add-path::C:\ProgramData\chocolatey\bin"
 
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
