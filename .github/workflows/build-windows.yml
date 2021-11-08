@@ -16,15 +16,7 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: install rsync
-      run: choco install rsync --no-progress --yes --version=5.4.1.1
-
-#    - name: Include $CONDA in $PATH
-#       echo '::set-env name=CONDA_EXEC::C:\Miniconda\condabin\conda.bat'
-   
-    - name: try conda rsync
-      run: |
-        C:\Miniconda\condabin\conda.bat activate base
-        conda install rsync
+      run: choco install rsync --no-progress --yes 
 
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
