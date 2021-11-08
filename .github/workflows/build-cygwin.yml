@@ -29,9 +29,8 @@ jobs:
 
 
     - name: copy stuff
-      shell: bash
       run: |
-        cp -a C:/Users/runneradmin/.ssh C:/cygwin/home/runneradmin
+        xcopy /f C:/Users/runneradmin/.ssh C:/cygwin/home/runneradmin/.ssh
         
     - name: try ssh
       run: |
