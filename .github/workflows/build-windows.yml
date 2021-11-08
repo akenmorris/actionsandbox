@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v1
 
     - name: install rsync
-      run: choco install rsync --no-progress --yes 
+#      run: choco install rsync --no-progress --yes 
       run: choco install rsync openssh --no-progress --yes 
 
     - name: update path
