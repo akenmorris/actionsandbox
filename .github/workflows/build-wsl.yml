@@ -12,9 +12,15 @@ jobs:
     runs-on: windows-latest
     
     steps:
-    - uses: Vampire/setup-wsl@v1
+
+#C:\Windows\System32\bash.exe
+
       
     - uses: actions/checkout@v1
+
+    - name: asdf1
+      shell: bash
+      run: which apt-get
 
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
@@ -23,12 +29,12 @@ jobs:
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
       
     - name: try out wsl
-      shell: wsl-bash {0}
+      shell: C:\Windows\System32\bash.exe
       run: |
         which ssh
 
     - name: try out wsl
-      shell: wsl-bash {0}
+      shell: C:\Windows\System32\bash.exe
       run: |
         apt-get install rsync
         
