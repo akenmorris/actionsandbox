@@ -31,6 +31,12 @@ jobs:
     - name: copy stuff
       run: |
         xcopy C:\Users\runneradmin\.ssh C:\cygwin\home\runneradmin\.ssh\ /E /H
+        dir C:\cygwin\home\runneradmin\.ssh\
+
+    - name: whatever
+      shell: bash
+      run: |
+        ls ~/.ssh
         
     - name: try ssh
       run: |
