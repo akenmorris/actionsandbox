@@ -17,6 +17,10 @@ jobs:
 
     - name: Setup WSL
       uses: Vampire/setup-wsl@v1.1.0
+      with:
+        additional-packages:
+          rsync
+          openssh
       
     - uses: actions/checkout@v1
 
@@ -30,7 +34,10 @@ jobs:
       shell: wsl-bash {0}
       run: |
         ls
-        which ssh
+
+    - name: try out wsl
+      shell: wsl-bash {0}
+      run: |
         which rsync
         
     - name: rsync
