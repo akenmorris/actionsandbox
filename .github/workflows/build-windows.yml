@@ -30,7 +30,7 @@ jobs:
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
     - name: Update PATH
-       run: |
+      run: |
              set -xue
              cygpath -w /usr/bin >> $GITHUB_PATH
              cygpath -w /mingw32/bin >> $GITHUB_PATH
