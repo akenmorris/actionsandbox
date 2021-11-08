@@ -17,7 +17,12 @@ jobs:
 
 #    - name: install rsync
 #      run: choco install rsync --no-progress --yes
-    
+
+    - name: try conda rsync
+      run: |
+        C:\Miniconda\condabin\conda.bat activate base
+        conda install rsync
+
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
       with:
