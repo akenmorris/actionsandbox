@@ -24,6 +24,8 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }} 
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
+    - name: try ssh
+      run: ssh -vvv runner@${{ secrets.SSH_HOST }} ls
     - name: rsync
       run: rsync -avz . runner@${{ secrets.SSH_HOST }}:github
     
