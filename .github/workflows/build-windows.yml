@@ -25,7 +25,7 @@ jobs:
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
     - name: rsync
-      run: rsync . runner@${{ secrets.SSH_HOST }}
+      run: rsync -avz . runner@${{ secrets.SSH_HOST }}:github
     
     - uses: actions/download-artifact@v2
       with:
