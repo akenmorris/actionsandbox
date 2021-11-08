@@ -25,7 +25,7 @@ jobs:
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
       
     - name: try out wsl
-      shell: wslbash.exe
+      shell: C:\Windows\System32\bash.exe
       run: |
         which ssh
         which rsync
