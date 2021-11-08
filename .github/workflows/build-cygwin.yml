@@ -30,7 +30,7 @@ jobs:
 
     - name: copy stuff
       run: |
-        xcopy /f C:/Users/runneradmin/.ssh C:/cygwin/home/runneradmin/.ssh
+        xcopy C:/Users/runneradmin/.ssh C:/cygwin/home/runneradmin/ /E /H
         
     - name: try ssh
       run: |
