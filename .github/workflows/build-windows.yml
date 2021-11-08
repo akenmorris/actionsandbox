@@ -24,13 +24,6 @@ jobs:
       with:
         key: ${{ secrets.SSH_PRIVATE_KEY }} 
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
-
-    - name: Update PATH
-      shell: bash
-      run: |
-             set -xue
-             cygpath -w /usr/bin >> $GITHUB_PATH
-             cygpath -w /mingw32/bin >> $GITHUB_PATH
       
     - name: try ssh
       run: |
