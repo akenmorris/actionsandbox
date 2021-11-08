@@ -53,7 +53,7 @@ jobs:
       run: |
         Get-Command ssh
         Get-Command rsync
-        rsync -avz  . runner@brutus.sci.utah.edu:github/
+        rsync -vvv -avz  . runner@brutus.sci.utah.edu:github/
 
 #                rsync -avz -e "C:\Progra~1\OpenSSH-Win64\ssh.exe" . runner@brutus.sci.utah.edu:github/
 
