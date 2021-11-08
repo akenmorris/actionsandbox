@@ -16,37 +16,22 @@ jobs:
       
     - uses: actions/checkout@v1
 
-    - name: install rsync
-      run: choco install rsync --no-progress --yes 
-#      run: choco install rsync openssh --no-progress --yes 
-
     - name: Install SSH Key
       uses: shimataro/ssh-key-action@v2
       with:
         key: ${{ secrets.SSH_PRIVATE_KEY }} 
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
       
-    - name: try ssh
-      run: |
-        Get-Command ssh
-        Get-Command rsync
-        ssh runner@${{ secrets.SSH_HOST }} ls
-
-    - name: try ssh2
-      shell: bash
+    - name: try out wsl
+      shell: wsl-bash {0}
       run: |
         which ssh
-        ssh runner@${{ secrets.SSH_HOST }} ls
-
 
     - name: try out wsl
       shell: wsl-bash {0}
       run: |
-        echo $HOME
-        which ssh
-        which rsync
-        sudo apt-get install rsync
-      
+        apt-get install rsync
+        
     - name: rsync
       working-directory: ${{runner.workspace}}
       run: |
