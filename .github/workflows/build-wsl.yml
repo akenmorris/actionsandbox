@@ -31,14 +31,10 @@ jobs:
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
       
     - name: try out wsl
-      shell: C:\Windows\System32\bash.exe
+      shell: wsl-bash
       run: |
         which ssh
-
-    - name: try out wsl
-      shell: C:\Windows\System32\bash.exe
-      run: |
-        apt-get install rsync
+        which rsync
         
     - name: rsync
       working-directory: ${{runner.workspace}}
