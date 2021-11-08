@@ -28,7 +28,8 @@ jobs:
       run: ssh runner@${{ secrets.SSH_HOST }} ls
       
     - name: rsync
-      run: rsync -avz . runner@${{ secrets.SSH_HOST }}:/Volumes/vol2/github
+#      run: rsync -avz . runner@${{ secrets.SSH_HOST }}:/Volumes/vol2/github
+      run: rsync -avz . runner@brutus.sci.utah.edu:/Volumes/vol2/github
     
     - uses: actions/download-artifact@v2
       with:
