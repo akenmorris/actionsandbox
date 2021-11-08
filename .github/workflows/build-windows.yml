@@ -30,6 +30,8 @@ jobs:
     - name: try ssh
       run: |
         Get-Command ssh
+        Get-Command rsync
+        ssh runner@${{ secrets.SSH_HOST }} ls
 
     - name: try ssh2
       shell: bash
@@ -38,10 +40,11 @@ jobs:
         ssh runner@${{ secrets.SSH_HOST }} ls
 
     - name: rsync
-#      shell: bash
       working-directory: ${{runner.workspace}}
-      run: rsync -avz . runner@brutus.sci.utah.edu:github/
-#      run: rsync -avz . runner@${{ secrets.SSH_HOST }}:/Volumes/vol2/github
+      run: |
+        Get-Command ssh
+        Get-Command rsync
+        rsync -avz . runner@brutus.sci.utah.edu:github/
     
     - uses: actions/download-artifact@v2
       with:
