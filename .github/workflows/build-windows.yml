@@ -18,6 +18,9 @@ jobs:
 #    - name: install rsync
 #      run: choco install rsync --no-progress --yes
 
+    - name: Include $CONDA in $PATH
+       run: echo ::add-path::$CONDA/condabin  # <--- condabin VS bin
+   
     - name: try conda rsync
       run: |
         C:\Miniconda\condabin\conda.bat activate base
