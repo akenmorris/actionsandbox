@@ -1,0 +1,74 @@
+name: Windows Build WSL
+
+on: push
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+  
+jobs:
+  build:
+
+    runs-on: windows-latest
+    
+    steps:
+    - uses: Vampire/setup-wsl@v1
+      
+    - uses: actions/checkout@v1
+
+    - name: install rsync
+      run: choco install rsync --no-progress --yes 
+#      run: choco install rsync openssh --no-progress --yes 
+
+    - name: Install SSH Key
+      uses: shimataro/ssh-key-action@v2
+      with:
+        key: ${{ secrets.SSH_PRIVATE_KEY }} 
+        known_hosts: ${{ secrets.KNOWN_HOSTS }}
+      
+    - name: try ssh
+      run: |
+        Get-Command ssh
+        Get-Command rsync
+        ssh runner@${{ secrets.SSH_HOST }} ls
+
+    - name: try ssh2
+      shell: bash
+      run: |
+        which ssh
+        ssh runner@${{ secrets.SSH_HOST }} ls
+
+
+    - name: try out wsl
+      shell: wsl-bash {0}
+      run: |
+        echo $HOME
+        which ssh
+        which rsync
+        sudo apt-get install rsync
+      
+    - name: rsync
+      working-directory: ${{runner.workspace}}
+      run: |
+        Get-Command ssh
+        Get-Command rsync
+        rsync -v -v -v -avz runner@brutus.sci.utah.edu:file .
+
+    - uses: actions/download-artifact@v2
+      with:
+        name: my-artifact
+        path: D:\\incoming
+
+    - name: Display structure of downloaded files
+      run: ls -R
+      working-directory: D:\\incoming
+      
+    - name: list
+      shell: bash
+      working-directory: ${{runner.workspace}}
+      run: mkdir /d/someplace ; echo "contents" > /d/someplace/file.txt ; ls -laR /d/someplace
+    
+    - uses: actions/upload-artifact@v2
+      with:
+        name: out-artifact
+        path: D:\\someplace
