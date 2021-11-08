@@ -32,7 +32,9 @@ jobs:
 
     - name: try ssh2
       shell: bash
-      run: ssh runner@${{ secrets.SSH_HOST }} ls
+      run: |
+        which ssh
+        ssh runner@${{ secrets.SSH_HOST }} ls
 
     - name: rsync
 #      shell: bash
