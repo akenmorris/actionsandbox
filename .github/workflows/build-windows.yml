@@ -29,6 +29,13 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }} 
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
 
+
+ - name: Update PATH
+        run: | 
+             set -xue
+             cygpath -w /usr/bin >> $GITHUB_PATH
+             cygpath -w /mingw32/bin >> $GITHUB_PATH
+      
     - name: try ssh
       run: |
         Get-Command ssh
@@ -46,8 +53,10 @@ jobs:
       run: |
         Get-Command ssh
         Get-Command rsync
-        rsync -avz -e "C:\Progra~1\OpenSSH-Win64\ssh.exe" . runner@brutus.sci.utah.edu:github/
-    
+        rsync -avz  . runner@brutus.sci.utah.edu:github/
+
+#                rsync -avz -e "C:\Progra~1\OpenSSH-Win64\ssh.exe" . runner@brutus.sci.utah.edu:github/
+
     - uses: actions/download-artifact@v2
       with:
         name: my-artifact
