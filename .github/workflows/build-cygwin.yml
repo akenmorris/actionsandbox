@@ -33,11 +33,11 @@ jobs:
         Get-Command rsync
         ssh runner@${{ secrets.SSH_HOST }} ls
 
-    - name: try ssh2
-      shell: bash
-      run: |
-        which ssh
-        ssh runner@${{ secrets.SSH_HOST }} ls
+    # - name: try ssh2
+    #   shell: bash
+    #   run: |
+    #     which ssh
+    #     ssh runner@${{ secrets.SSH_HOST }} ls
 
     - name: rsync
       working-directory: ${{runner.workspace}}
