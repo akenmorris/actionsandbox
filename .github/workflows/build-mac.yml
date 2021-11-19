@@ -18,6 +18,7 @@ jobs:
     - name: run some commands
       run: |
         conda init zsh
+        source ~/.zshrc
         echo "ok"
         sudo chown -R $UID $CONDA
         conda create --name myenv
