@@ -26,3 +26,4 @@ jobs:
         ccache -s
         ccache -p
         which rsync
+        conda env create --name myenv
