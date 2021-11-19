@@ -17,9 +17,8 @@ jobs:
 
     - name: run some commands
       run: |
+        sudo chown -R $UID $CONDA
         conda create --name myenv
+        conda activate myenv
         conda show
         conda info
-        which scp
-        which brew
-        which rsync
