@@ -23,3 +23,6 @@ jobs:
         which brew
         brew install ccache
         which ccache
+        ccache -s
+        ccache -p
+        which rsync
