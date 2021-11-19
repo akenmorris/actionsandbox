@@ -18,6 +18,7 @@ jobs:
     - name: run some commands
       run: |
         which conda
-        which ccache
+        conda info
         which scp
-        
+        which brew
+        which ccache
