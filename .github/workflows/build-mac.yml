@@ -21,4 +21,5 @@ jobs:
         conda info
         which scp
         which brew
+        brew install ccache
         which ccache
