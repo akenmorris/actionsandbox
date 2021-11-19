@@ -35,5 +35,5 @@ jobs:
     - name: try scp
       run: |
         Get-Command scp
-        scp runner@brutus.sci.utah.edu:file .
+        scp runner@@${{ secrets.SSH_HOST }}:file .
         cat file
